@@ -14,7 +14,7 @@ import { DatePicker, TimePicker } from "@mui/x-date-pickers";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"; // Sử dụng Day.js để xử lý ngày
 import dayjs from "dayjs"; // Import dayjs
-import Phongkham from "..//components/images/phong-kham/phongkham1.png"
+import Phongkham from "..//images/phong-kham/phongkham1.png"
 
 const BookingForm = () => {
   const [selectedDate, setSelectedDate] = useState(dayjs());

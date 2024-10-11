@@ -9,6 +9,10 @@ const Intro = React.lazy(() => import("./pages/Intro"));
 const Contact = React.lazy(() => import("./pages/Contact"));
 const Booking = React.lazy(() => import("./pages/Booking"));
 const Infor = React.lazy(() => import("./pages/Infor"));
+const BakingSoda = React.lazy(() =>
+  import(".//components/Infors/ArticlesDetails/BakingSoda")
+);
+
 const PriceList = React.lazy(() => import("./pages/PriceList"));
 const Braces = React.lazy(() => import("./pages/Braces"));
 const Services = React.lazy(() => import("./pages/Services"));
@@ -24,6 +28,8 @@ const SD_Kham = React.lazy(() =>
 const SD_Nieng = React.lazy(() =>
   import(".//components/Services/ServiceDetails/SD_Nieng")
 );
+
+
 
 const LazyComponent = ({ Component }) => {
   const [isInView, setIsInView] = useState(false);
@@ -98,10 +104,15 @@ const App = () => {
         />
         <Route path="/Infor" element={<LazyComponent Component={Infor} />} />
         <Route
+          path="/articles/Cach-su-dung-baking-soda-lam-trang-rang-hieu-qua-tai-nha"
+          element={<LazyComponent Component={BakingSoda} />}
+        />
+        <Route
           path="/PriceList"
           element={<LazyComponent Component={PriceList} />}
         />
         <Route path="/Braces" element={<LazyComponent Component={Braces} />} />
+
         <Route
           path="/Services"
           element={<LazyComponent Component={Services} />}

@@ -10,7 +10,9 @@ import {
 import VolunteerActivismOutlinedIcon from "@mui/icons-material/VolunteerActivismOutlined";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import Diversity1OutlinedIcon from "@mui/icons-material/Diversity1Outlined";
-import rang1 from "..//images/r2.jpg";
+import rang1 from "..//images/intro/r3.png";
+import rang2 from "..//images/intro/r1.png";
+
 const IntrodutionHK = () => {
   return (
     <Box>
@@ -116,7 +118,7 @@ const IntrodutionHK = () => {
               width: { xs: "100vw", sm: "26rem", md: "100%" }, // Giảm width của ảnh
               height: { xs: "15rem", sm: "30rem", md: "34rem" },
               margin: { xs: "0 auto", sm: "0", md: "0" },
-              objectFit: "cover",
+              objectFit: "full",
               mx: { xs: "auto" }, // Canh giữa ảnh
             }}
           />
@@ -321,7 +323,7 @@ const IntrodutionHK = () => {
         >
           <Box
             component="img"
-            src="https://picsum.photos/700/240"
+            src={rang2}
             alt="giới thiệu nha khoa"
             sx={{
               width: { xs: "21rem", sm: "27rem", md: "40rem" }, // Giảm width của ảnh
