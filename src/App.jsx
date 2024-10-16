@@ -19,8 +19,8 @@ const Services = React.lazy(() => import("./pages/Services"));
 const SD_Rang = React.lazy(() =>
   import(".//components/Services/ServiceDetails/SD_Rang")
 );
-const SD_Implant = React.lazy(() =>
-  import(".//components/Services/ServiceDetails/SD_Implant")
+const SD_PhucHinh = React.lazy(() =>
+  import("./components/Services/ServiceDetails/SD_PhucHinh")
 );
 const SD_Kham = React.lazy(() =>
   import(".//components/Services/ServiceDetails/SD_Kham")
@@ -124,8 +124,8 @@ const App = () => {
         />
 
         <Route
-          path="/Services/trong-rang-implant"
-          element={<LazyComponent Component={SD_Implant} />}
+          path="/Services/phuc-hinh-rang-da-mat"
+          element={<LazyComponent Component={SD_PhucHinh} />}
         />
 
         <Route

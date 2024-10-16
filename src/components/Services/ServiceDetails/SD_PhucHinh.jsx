@@ -2,38 +2,34 @@ import React, { Suspense } from "react";
 import { Box, CircularProgress, Typography, Divider } from "@mui/material";
 import { Grid, Card, CardMedia, CardContent, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import caoVoi from "..//img/cao_voi/Cao-voi.jpg"
-import tramRang from "..//img/tram_rang/tram-rang.jpg"
-import tayRang from "..//img/tay_rang/tay_trang.jpg"
-import danSu from "..//img/dan-su/dan-su-venner.jpg"
+import implant from "../img/phuc-hinh/cay-ghep-implant.jpg"
+import rangSu from "../img/phuc-hinh/rang-su.jpg"
+import hamGia from "../img/phuc-hinh/rang-gia-thao-lap.jpg"
+
 const Header = React.lazy(() => import("../../Header"));
 const Footer = React.lazy(() => import("../../Footer"));
 const BookingForm = React.lazy(() => import("../../BookingForm"));
 const servicesDataThamMy = [
   {
-    title: "Tẩy trắng răng",
-    imgSrc: tayRang, // Thay thế bằng đường dẫn ảnh thực tế
+    title: "Hàm giả tháo lắp",
+    imgSrc: hamGia, // Thay thế bằng đường dẫn ảnh thực tế
     link: '/tay-trang-rang', // Đường dẫn trang chi tiết
   },
   {
-    title: "Dán sứ Veneer",
-    imgSrc: danSu,
+    title: "Cấy ghép Implant",
+    imgSrc: implant,
     link: '/dan-su-veneer',
   },
   {
-    title: "Trám răng",
-    imgSrc: tramRang,
+    title: "Răng sứ thẩm mỹ",
+    imgSrc: rangSu,
     link: '/tram-rang',
   },
-  {
-    title: "Cạo vôi răng",
-    imgSrc: caoVoi,
-    link: '/cao-voi-rang',
-  },
+  
   
 ];
 
-const SD_Rang = () => {
+const SD_PhucHinh = () => {
   const navigate = useNavigate(); // Hook để điều hướng
 
   const handleClick = (link) => {
@@ -91,7 +87,7 @@ const SD_Rang = () => {
               mt: { xs: "1rem", sm: "1rem", md: "1rem" },
             }}
           >
-            Các dịch vụ về nha khoa thẩm mỹ của HBT
+            Các dịch vụ về phục hình răng đã mất của HBT
           </Typography>
         </Box>
         <Box
@@ -162,8 +158,9 @@ const SD_Rang = () => {
             ))}
           </Grid>
         </Suspense>
-        <br/>
-        <Suspense
+<br>
+</br>
+<Suspense
           fallback={
             <Box
               sx={{
@@ -212,4 +209,4 @@ const SD_Rang = () => {
   );
 };
 
-export default SD_Rang;
+export default SD_PhucHinh;

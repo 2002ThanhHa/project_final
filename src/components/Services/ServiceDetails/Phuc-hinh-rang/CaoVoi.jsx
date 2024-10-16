@@ -33,7 +33,7 @@ const servicesDataThamMy = [
   
 ];
 
-const SD_Rang = () => {
+const CaoVoi = () => {
   const navigate = useNavigate(); // Hook để điều hướng
 
   const handleClick = (link) => {
@@ -212,4 +212,4 @@ const SD_Rang = () => {
   );
 };
 
-export default SD_Rang;
+export default CaoVoi;
