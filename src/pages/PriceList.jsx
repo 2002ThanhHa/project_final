@@ -43,9 +43,10 @@ const PriceList = () => {
       <Typography
         sx={{
           textAlign: "center",
-          fontSize: { xs: "1rem", sm: "1.5rem", md: "2rem" }, // Responsive font sizeF
+          fontSize: { xs: "2rem", sm: "2rem", md: "2rem" }, // Responsive font sizeF
           fontWeight: "bold",
           padding: { xs: "5px", sm: "10px", md: "15px" }, // Responsive padding
+          paddingTop:{md: "8rem",xs:"6rem", sm:"9rem"}
         }}
       >
         BẢNG GIÁ NHA KHOA HOÀNG KIM

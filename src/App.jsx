@@ -16,18 +16,7 @@ const BakingSoda = React.lazy(() =>
 const PriceList = React.lazy(() => import("./pages/PriceList"));
 const Braces = React.lazy(() => import("./pages/Braces"));
 const Services = React.lazy(() => import("./pages/Services"));
-const SD_Rang = React.lazy(() =>
-  import(".//components/Services/ServiceDetails/SD_Rang")
-);
-const SD_PhucHinh = React.lazy(() =>
-  import("./components/Services/ServiceDetails/SD_PhucHinh")
-);
-const SD_Kham = React.lazy(() =>
-  import(".//components/Services/ServiceDetails/SD_Kham")
-);
-const SD_Nieng = React.lazy(() =>
-  import(".//components/Services/ServiceDetails/SD_Nieng")
-);
+const Bracket = React.lazy(() => import("./components/Services/Bracket"))
 
 
 
@@ -104,7 +93,7 @@ const App = () => {
         />
         <Route path="/Infor" element={<LazyComponent Component={Infor} />} />
         <Route
-          path="/articles/Cach-su-dung-baking-soda-lam-trang-rang-hieu-qua-tai-nha"
+          path="/Cach-su-dung-baking-soda-lam-trang-rang-hieu-qua-tai-nha"
           element={<LazyComponent Component={BakingSoda} />}
         />
         <Route
@@ -117,26 +106,11 @@ const App = () => {
           path="/Services"
           element={<LazyComponent Component={Services} />}
         />
-
         <Route
-          path="/Services/nha-khoa-tham-my"
-          element={<LazyComponent Component={SD_Rang} />}
+          path="/nieng-rang-mac-cai"
+          element={<LazyComponent Component={Bracket} />}
         />
 
-        <Route
-          path="/Services/phuc-hinh-rang-da-mat"
-          element={<LazyComponent Component={SD_PhucHinh} />}
-        />
-
-        <Route
-          path="/Services/dieu-tri-tong-quat"
-          element={<LazyComponent Component={SD_Kham} />}
-        />
-
-        <Route
-          path="/Services/nieng-rang-chinh-nha"
-          element={<LazyComponent Component={SD_Nieng} />}
-        />
         {/* Add more routes */}
       </Routes>
     </Router>

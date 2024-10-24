@@ -47,14 +47,16 @@ const Services = () => {
           height: "auto",
           width: "100vw",
           mt: { xs: "1rem", sm: "1rem", md: "1rem" },
+          paddingTop:{md: "8rem",xs:"5rem"}
         }}
       >
         <Typography
           variant="h3"
           sx={{
             color: "RGB(54,49,52)",
-            fontSize: { xs: "1rem", sm: "2rem", md: "2rem" },
+            fontSize: { xs: "2rem", sm: "2rem", md: "2rem" },
             fontWeight: "bold",
+            paddingTop:{md: "0",xs:"0.5rem", sm:"2rem"}
           }}
         >
           CÁC DỊCH VỤ CỦA HBT
