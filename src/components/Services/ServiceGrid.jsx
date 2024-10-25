@@ -1,14 +1,16 @@
 import React, { Suspense, useState } from "react";
 import { Box, CircularProgress, Typography, Divider, Modal, TextField, MenuItem } from "@mui/material";
-import { Grid, Card, CardMedia, CardContent, Button,Snackbar,
-  Alert, } from '@mui/material';
+import {
+  Grid, Card, CardMedia, CardContent, Button, Snackbar,
+  Alert,
+} from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import treEm from "..//Services/img/benh/chinh_nha_tre_em.jpg"
 import nhaChu from "..//Services/img/benh/nha-chu.jpg"
 import nuou from "..//Services/img/benh/nuou.jpg"
 import tuy from "..//Services/img/benh/tuy.jpg"
 import sauRang from "..//Services/img/benh/sau-rang.jpg"
-import caoVoi from "..//images/pricelist/cao-voi-rang.png"; 
+import caoVoi from "..//images/pricelist/cao-voi-rang.png";
 
 
 
@@ -27,205 +29,208 @@ import Implant from "..//images/intro/TRIP.jpg";
 
 
 const servicesDataThamMy = [
-  { title: "Nha khoa trẻ em", imgSrc: treEm, link: '/nha-khoa-tre-em', price: "500.000 - 1.000.000 VNĐ/răng" },
-  { title: "Điều trị nha chu", imgSrc: nhaChu, link: '/dieu-tri-nha-chu', price: "500.000 - 1.000.000 VNĐ/răng" },
-  { title: "Điều trị nướu", imgSrc: nuou, link: '/dieu-tri-nuou', price: "500.000 - 1.000.000 VNĐ/răng" },
-  { title: "Điều trị tủy", imgSrc: tuy, link: '/dieu-tri-tuy', price: "500.000 - 1.000.000 VNĐ/răng" },
-  { title: "Điều trị sâu răng", imgSrc: sauRang, link: '/dieu-tri-sau-rang', price: "500.000 - 1.000.000 VNĐ/răng" },
-  
+  { id: "Điều trị bệnh lý nha khoa", title: "Nha khoa trẻ em", imgSrc: treEm, link: '/nha-khoa-tre-em', price: "500.000 - 1.000.000 VNĐ/răng" },
+  { id: "Điều trị bệnh lý nha khoa", title: "Điều trị nha chu", imgSrc: nhaChu, link: '/dieu-tri-nha-chu', price: "500.000 - 1.000.000 VNĐ/răng" },
+  { id: "Điều trị bệnh lý nha khoa", title: "Điều trị nướu", imgSrc: nuou, link: '/dieu-tri-nuou', price: "500.000 - 1.000.000 VNĐ/răng" },
+  { id: "Điều trị bệnh lý nha khoa", title: "Điều trị tủy", imgSrc: tuy, link: '/dieu-tri-tuy', price: "500.000 - 1.000.000 VNĐ/răng" },
+  { id: "Điều trị bệnh lý nha khoa", title: "Điều trị sâu răng", imgSrc: sauRang, link: '/dieu-tri-sau-rang', price: "500.000 - 1.000.000 VNĐ/răng" },
+
   {
+    id: "Niềng răng - Cải thiện khớp cắn",
     title: "Niềng răng mắc cài",
     imgSrc: rangMacCai, // Thay thế bằng đường dẫn ảnh thực tế
     link: '/nieng-rang-mac-cai', // Đường dẫn trang chi tiết
     price: "30.000.000 - 50.000.000 VNĐ/liệu trình (tùy vào tình trạng răng)"
   },
   {
+    id: "Niềng răng - Cải thiện khớp cắn",
     title: "Niềng răng tháo lắp",
     imgSrc: thaoLap,
     link: '/nieng-rang-thao-lap',
     price: "5.000.000 - 8.000.000 VNĐ/hàm (tùy vào tình trạng răng)"
   },
   {
+    id: "Niềng răng - Cải thiện khớp cắn",
     title: "Niềng răng trong suốt",
     imgSrc: trongSuot,
     price: "32.000.000 - 70.000.000 VNĐ/hàm (tùy vào tình trạng răng)",
     link: '/nieng-rang-trong-suot',
   },
   {
+    id: "Phục hình răng đã mất",
     title: "Hàm giả tháo lắp",
     imgSrc: rangThaoLap, // Thay thế bằng đường dẫn ảnh thực tế
     link: '/ham-gia-thao-lap', // Đường dẫn trang chi tiết
     price: "800.000 - 1.000.000 VNĐ/răng (tùy vào tình trạng răng)"
   },
   {
+    id: "Phục hình răng đã mất",
     title: "Cấy ghép Implant",
     imgSrc: Implant,
     link: '/cay-ghep-implant',
     price: "3.000.000 - 13.000.000 VNĐ/răng (tùy vào tình trạng răng)"
   },
   {
+    id: "Phục hình răng đã mất",
     title: "Răng sứ thẩm mỹ",
     imgSrc: suMy,
     link: '/tram-rang',
     price: "800.000 - 12.000.000 VNĐ/răng (tùy vào loại sứ)"
   },
   {
+    id: "Nha khoa thẩm mỹ",
     title: "Tẩy trắng răng",
     imgSrc: tayRang, // Thay thế bằng đường dẫn ảnh thực tế
     link: '/tay-trang-rang', // Đường dẫn trang chi tiết
     price: "99.000 VNĐ/hàm"
   },
   {
+    id: "Nha khoa thẩm mỹ",
     title: "Dán sứ Veneer",
     imgSrc: danSu,
     link: '/dan-su-veneer',
     price: "6.000.000 VNĐ/răng"
   },
   {
+    id: "Nha khoa thẩm mỹ",
     title: "Trám răng",
     imgSrc: tramRang,
     link: '/tram-rang',
     price: "99.000 VNĐ/răng"
   },
   {
+    id: "Nha khoa thẩm mỹ",
     title: "Cạo vôi răng",
     imgSrc: caoVoi,
     link: '/cao-voi-rang',
     price: "99.000 VNĐ/răng"
   },
-  
-];
 
+];
 const ServiceGrid = () => {
-  const navigate = useNavigate(); // Hook để điều hướng
-  const [open, setOpen] = useState(false); // Quản lý trạng thái modal
-  const [selectedService, setSelectedService] = useState(null); // Lưu trữ dịch vụ đã chọn
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [filteredServices, setFilteredServices] = useState(servicesDataThamMy);
+  const [filter, setFilter] = useState("Tất cả"); // Thêm trạng thái lọc
+
+  const [formData, setFormData] = useState({
+    name: "", phone: "", email: "", time: "9h",
+    date: new Date().toISOString().split("T")[0],
+    doctorGender: "Nam", notes: ""
+  });
+
+  const [errors, setErrors] = useState({});
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
   const handleClick = (link) => {
-    navigate(link); // Chuyển hướng đến trang chi tiết dịch vụ
+    navigate(link);
   };
 
   const handleBookingClick = (service) => {
-    setSelectedService(service); // Lưu dịch vụ đã chọn
-    setOpen(true); // Mở modal
+    setSelectedService(service);
+    setOpen(true);
   };
 
-   const handleClose = () => setOpen(false); // Đóng modal
-  // const BookingModal = ({ selectedService, open, handleClose }) => {
- 
- 
-     const [formData, setFormData] = useState({
-      name: "",
-      phone: "",
-      email: "",
-      time: "9h",
-      date: new Date().toISOString().split("T")[0], // Lấy ngày hôm nay
-      doctorGender: "Nam",
-      notes: "",
-    });
-  
-    const [errors, setErrors] = useState({});
- 
-    const [snackbarMessage, setSnackbarMessage] = useState("");
-  
-    const handleChange = (e) => {
-      setFormData({
-        ...formData,
-        [e.target.name]: e.target.value,
-      });
-    };
-  
-    const validateForm = () => {
-      const newErrors = {};
-      if (!formData.name) newErrors.name = "Vui lòng nhập họ tên";
-      if (!formData.phone) newErrors.phone = "Vui lòng nhập số điện thoại";
-      if (!formData.email) newErrors.email = "Vui lòng nhập email";
-      if (!formData.date) newErrors.date = "Vui lòng chọn ngày";
-      if (!formData.time) newErrors.date = "Vui lòng chọn thời gian";
-      if (!formData.doctorGender) newErrors.date = "Vui lòng chọn bác sĩ";
-  
-      setErrors(newErrors);
-      return Object.keys(newErrors).length === 0;
-    };
-  
-    const handleBookingSubmit = () => {
-      if (!validateForm()) {
-        // Hiển thị lỗi nếu có trường trống
-        setSnackbarMessage("Vui lòng nhập đầy đủ các trường bắt buộc");
-        setOpenSnackbar(true);
-        return;
-      }
-  
-      // Logic đặt lịch ở đây, ví dụ gọi API
-  
-      // Sau khi đặt lịch thành công
-      setSnackbarMessage("Đặt lịch thành công, vui lòng kiểm tra email sau 15 phút!");
-      setOpenSnackbar(true);
-      handleClose();
-    };
-  
-    const handleSnackbarClose = () => {
-      setOpenSnackbar(false); // Đóng thông báo khi người dùng bấm nút tắt
-    };
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh", // Đảm bảo chiều cao tối thiểu của trang để Header luôn ở trên cùng
-        maxWidth: "100vw",
-      }}
-    >
-      
-        <Grid container spacing={3} sx={{ padding: '20px' }}>
-          {servicesDataThamMy.map((service, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}> {/* 4 cột trên màn hình lớn */}
-              <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                  component="img"
-                  height="250"
-                  image={service.imgSrc}
-                  alt={service.title}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {service.title}
-                  </Typography>
-                  <Typography gutterBottom variant="body1" component="div">
-                    Giá: {service.price}
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    color="error"
-                    sx={{
-                      margin: 0.5,
-                      width: 300,
-                      fontSize: { xs: "0.8rem", sm: "0.75rem", md: "0.875rem" },
-                    }}
-                    onClick={() => handleClick(service.link)} // Điều hướng khi bấm
-                  >
-                    Xem thêm
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    sx={{
-                      margin: 0.5,
-                      width: 300,
-                      fontSize: { xs: "0.8rem", sm: "0.75rem", md: "0.875rem" },
-                    }}
-                    onClick={() => handleBookingClick(service)} // Hiển thị form đặt lịch khi bấm
-                  >
-                    Đặt lịch
-                  </Button>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+  const handleCategoryChange = (e) => {
+    const category = e.target.value;
+    setSelectedCategory(category);
+    setFilteredServices(
+      category ? servicesDataThamMy.filter((service) => service.id === category) : servicesDataThamMy
+    );
+  };
+  const handleClose = () => setOpen(false);
 
-        {/* Modal form đặt lịch */}
-        <Modal open={open} onClose={handleClose}>
+  const handleFilterChange = (newFilter) => {
+    setFilter(newFilter);
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name) newErrors.name = "Vui lòng nhập họ tên";
+    if (!formData.phone) newErrors.phone = "Vui lòng nhập số điện thoại";
+    if (!formData.email) newErrors.email = "Vui lòng nhập email";
+    if (!formData.date) newErrors.date = "Vui lòng chọn ngày";
+    if (!formData.time) newErrors.date = "Vui lòng chọn thời gian";
+    if (!formData.doctorGender) newErrors.date = "Vui lòng chọn bác sĩ";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleBookingSubmit = () => {
+    if (!validateForm()) {
+      setSnackbarMessage("Vui lòng nhập đầy đủ các trường bắt buộc");
+      setOpenSnackbar(true);
+      return;
+    }
+    setSnackbarMessage("Đặt lịch thành công, vui lòng kiểm tra email sau 15 phút!");
+    setOpenSnackbar(true);
+    handleClose();
+  };
+
+  const handleSnackbarClose = () => setOpenSnackbar(false);
+
+  return (
+   <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh", maxWidth: "100vw" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 2,
+          mb: 2,
+        }}
+      >
+        <Button variant="outlined" onClick={() => setFilteredServices(servicesDataThamMy)}>
+          Tất cả
+        </Button>
+        <TextField
+          select
+          label="Chọn loại dịch vụ"
+          value={selectedCategory}
+          onChange={handleCategoryChange}
+          sx={{ minWidth: 200 }} // Điều chỉnh độ rộng của TextField cho cân đối
+        >
+          {[...new Set(servicesDataThamMy.map((service) => service.id))].map((category, index) => (
+            <MenuItem key={index} value={category}>
+              {category}
+            </MenuItem>
+          ))}
+        </TextField>
+      </Box>
+
+      <Grid container spacing={3} sx={{ padding: '20px' }}>
+        {filteredServices.map((service, index) => (
+          <Grid item xs={12} sm={6} md={3} key={index}>
+            <Card sx={{ maxWidth: 345 }}>
+              <CardMedia component="img" height="250" image={service.imgSrc} alt={service.title} />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {service.title}
+                </Typography>
+                <Typography gutterBottom variant="body1" component="div">
+                  Giá: {service.price}
+                </Typography>
+                <Button variant="contained" color="error" onClick={() => handleClick(service.link)}>
+                  Xem thêm
+                </Button>
+                <Button variant="contained" color="primary" onClick={() => handleBookingClick(service)}>
+                  Đặt lịch
+                </Button>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+      {/* Modal form đặt lịch */}
+      <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
             position: "absolute",
@@ -372,7 +377,7 @@ const ServiceGrid = () => {
         </Alert>
       </Snackbar>
 
-       
+
     </Box>
   );
 };

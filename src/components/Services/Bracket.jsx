@@ -15,10 +15,6 @@ import {
     MenuItem,
     InputLabel,
     FormControl,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
     Snackbar,
     Alert, Grid
 } from "@mui/material";
@@ -50,6 +46,7 @@ const Bracket = () => {
     const [tabIndex, setTabIndex] = useState(0); // Tab state
     const [service, setService] = useState(""); // State for selected service
     const [price, setPrice] = useState(""); // State for price
+    const [serviceImage, setServiceImage] = useState("");
     const [error, setError] = useState(""); // Error state for validation
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -80,17 +77,21 @@ const Bracket = () => {
 
         // Set price based on selected service
         switch (selectedService) {
-            case "Niềng răng mắc cài":
-                setPrice("5,000,000 VND");
+            case "Niềng răng mắc cài kim loại mặt ngoài":
+                setPrice("32.000.000 - 44.000.000 VND");
+                setServiceImage(r2);
                 break;
-            case "Niềng răng Invisalign":
-                setPrice("10,000,000 VND");
+            case "Niềng răng mắc cài kim loại mặt trong":
+                setPrice("52,000,000 - 85.000.000 VND");
+                setServiceImage(r4);
                 break;
-            case "Niềng răng thẩm mỹ":
-                setPrice("8,000,000 VND");
+            case "Niềng răng mắc cài sứ":
+                setPrice("50.000.000 - 65.000.000 VND");
+                setServiceImage(r3);
                 break;
             default:
                 setPrice("");
+                setSelectedImage("")
         }
     };
 
@@ -158,12 +159,13 @@ const Bracket = () => {
                 <Box sx={{
                     width: { xs: "100%", md: "60%" },
                     marginBottom: { xs: "20px", md: "0" },
-                    marginTop: { md: "2rem" }
+                    marginTop: { md: "2rem", xs: "5rem", sm: "7rem" }
                 }}>
                     <Box sx={{ margin: "1rem" }}>
                         <Typography sx={{
-                            fontSize: { md: "25px" },
-                            fontWeight: "bold"
+                            fontSize: { md: "25px", xs: "22px" },
+                            fontWeight: "bold",
+                            color: "red"
                         }}>
                             Niềng răng mắc cài
                         </Typography>
@@ -177,7 +179,11 @@ const Bracket = () => {
                     </Box>
 
                     {/* Thumbnails */}
-                    <Box sx={{ display: "flex", marginTop: "10px", justifyContent: { xs: "center", md: "start" } }}>
+                    <Box sx={{
+                        display: "flex",
+                        marginTop: "10px",
+                        justifyContent: { xs: "center", md: "start" },
+                    }}>
                         {images.map((image) => (
                             <Box key={image.id} onClick={() => setSelectedImage(image.src)} sx={{ cursor: "pointer", marginRight: "10px", border: selectedImage === image.src ? "2px solid #007bff" : "2px solid transparent", overflow: "hidden", borderRadius: "4px", transition: "transform 0.2s", '&:hover': { transform: "scale(1.1)" } }}>
                                 <img src={image.src}
@@ -204,12 +210,13 @@ const Bracket = () => {
                                             <TableCell>Niềng răng mắc cài</TableCell>
                                         </TableRow>
                                         <TableRow>
-                                            <TableCell>Thời gian sử dụng:</TableCell>
-                                            <TableCell>2-3 năm</TableCell>
+                                            <TableCell>Thời gian niềng:</TableCell>
+                                            <TableCell>1 - 2 năm</TableCell>
                                         </TableRow>
                                         <TableRow>
                                             <TableCell>Phương pháp:</TableCell>
-                                            <TableCell>Chỉnh nha bằng mắc cài kim loại</TableCell>
+                                            <TableCell>Chỉnh nha bằng mắc cài kim loại | mắc cài sứ </TableCell>
+
                                         </TableRow>
                                     </TableBody>
                                 </Table>
@@ -219,10 +226,81 @@ const Bracket = () => {
                         {/* Tab Panel: Bài viết đánh giá */}
                         {tabIndex === 1 && (
                             <Box sx={{ padding: "20px", backgroundColor: "#f9f9f9", borderRadius: "8px", marginTop: "10px" }}>
-                                <Typography variant="h6">Bài viết đánh giá</Typography>
-                                <Typography>
-                                    Đây là phương pháp niềng răng truyền thống giúp điều chỉnh các vấn đề về răng như hô, móm, lệch lạc. Mặc dù niềng răng mắc cài thường gây cảm giác khó chịu ban đầu, nhưng với chi phí hợp lý và hiệu quả lâu dài, đây vẫn là lựa chọn hàng đầu của nhiều khách hàng.
-                                </Typography>
+                                <Typography variant="h6" color="orange">Bài viết đánh giá về ưu, nhược điểm của từng dòng mắc cài phổ biến hiện nay</Typography>
+                                { /*kim loại mặt ngoài*/}
+                                <Box>
+                                    <Typography variant="h6" >1. Niềng răng mắc cài kim loại mặt ngoài</Typography>
+                                    <Box marginLeft={"10px"}>
+                                        <Typography color="blue"> *** Ưu điểm *** </Typography>
+                                        <Typography >
+                                            - Chi phí rẻ nhất trong các loại mắc cài. Mắc cài làm bằng vàng có chi phí cao hơn <br />
+                                            - Không đòi hỏi sử dụng công nghệ cao trong hỗ trợ điều trị <br />
+                                            - Thời gian điều trị ngắn do lực kéo mạnh <br />
+                                            - Cấu trúc dây thun có thể mang nhiều màu sắc, thích hợp sử dụng cho trẻ em <br />
+                                            <br></br>
+                                        </Typography>
+                                    </Box>
+                                    <Box marginLeft={"10px"}>
+                                        <Typography color="blue"> *** Nhược điểm *** </Typography>
+                                        <Typography >
+                                            - Kém thẩm mỹ vì các mắc cài sẽ lộ rõ khi giao tiếp<br />
+                                            - Các vấn đề dễ xảy ra như mắc cài bị bung tuột<br />
+                                            - Chất liệu của kim loại có thể gây kích ứng nướu, có hại cho cơ thể đối với một số người nhạy cảm. <br />
+                                            - Gây tổn thương các mô mềm trong khoang miệng (cắn môi, cắn má,...)<br />
+                                            - Cần kiêng kỵ nhiều loại đồ ăn cứng, dai, dính khi đang trong thời gian niềng răng
+
+                                        </Typography>
+                                    </Box>
+                                </Box>
+                                { /*kim loại mặt trong*/}
+                                <Box marginTop={"10px"}>
+
+                                    <Typography variant="h6" >2. Niềng răng mắc cài kim loại mặt trong (Mắc cài mặt lưỡi)</Typography>
+                                    <Box marginLeft={"10px"}>
+                                        <Typography color="blue"> *** Ưu điểm *** </Typography>
+                                        <Typography >
+                                            Tính thẩm mỹ cao nhất trong tất cả các loại mắc cài niềng răng do mắc cài được gắn vào mặt trong của răng,
+                                            phù hợp với bệnh nhân thường xuyên phải giao tiếp.
+                                            <br></br>
+                                            <br />
+                                        </Typography>
+                                    </Box>
+                                    <Box marginLeft={"10px"}>
+                                        <Typography color="blue"> *** Nhược điểm *** </Typography>
+                                        <Typography >
+                                            - Chi phí cao hơn nhiều so với các loại mắc cài niềng răng khác <br />
+                                            - Vệ sinh răng miệng, ăn uống khó khăn hơn<br />
+                                            - Đòi hỏi bác sĩ phải có tay nghề cao thì mới thực hiện đạt hiệu quả cao<br />
+                                            - Thời gian niềng răng sẽ kéo dài hơn
+
+                                        </Typography>
+                                    </Box>
+                                </Box>
+                                { /*sứ*/}
+                                <Box marginTop={"10px"}>
+
+                                    <Typography variant="h6" >3. Niềng răng mắc cài sứ</Typography>
+                                    <Box marginLeft={"10px"}>
+                                        <Typography color="blue"> *** Ưu điểm *** </Typography>
+                                        <Typography >
+                                            - Có tính thẩm mỹ cao do mắc cài có màu sắc tương đồng như màu răng thật, khi giao tiếp khó bị phát hiện<br />
+                                            - Chất liệu sứ, pha lê thân thiện với sức khỏe con người<br />
+                                            - Dây thun có độ đàn hồi cao cho kết quả chỉnh nha đạt hiệu quả cao<br />
+                                            - Rút ngắn thời gian niềng răng <br />
+                                            <br></br>
+                                        </Typography>
+                                    </Box>
+                                    <Box marginLeft={"10px"}>
+                                        <Typography color="blue"> *** Nhược điểm *** </Typography>
+                                        <Typography >
+                                            - Chi phí cao hơn mắc cài kim loại <br />
+                                            - Thời gian điều trị lâu hơn mắc cài kim loại<br />
+                                            - Do làm bằng vật liệu sứ, pha lê nên nếu va chạm mạnh thì mắc cài có thể bị phá vỡ<br />
+                                            - Chốt niềng răng lớn hơn so với các loại khác có thể gây cảm giác không thoải mái<br />
+                                            - Cần vệ sinh răng miệng và mắc cài đúng cách nếu không chân đế có thể bị nhiễm màu<br />
+                                        </Typography>
+                                    </Box>
+                                </Box>
                             </Box>
                         )}
                     </Box>
@@ -333,22 +411,19 @@ const Bracket = () => {
                             onChange={handleServiceChange}
                             label="Dịch vụ"
                         >
-                            <MenuItem value="Niềng răng mắc cài">Niềng răng mắc cài</MenuItem>
-                            <MenuItem value="Niềng răng Invisalign">Niềng răng Invisalign</MenuItem>
-                            <MenuItem value="Niềng răng thẩm mỹ">Niềng răng thẩm mỹ</MenuItem>
+                            <MenuItem value="Niềng răng mắc cài kim loại mặt ngoài">Niềng răng mắc cài kim loại mặt ngoài</MenuItem>
+                            <MenuItem value="Niềng răng mắc cài kim loại mặt trong">Niềng răng mắc cài kim loại mặt trong</MenuItem>
+                            <MenuItem value="Niềng răng mắc cài sứ">Niềng răng mắc cài sứ</MenuItem>
                         </Select>
                     </FormControl>
 
-                    <TextField
-                        label="Giá tiền"
-                        value={price}
-                        InputProps={{
-                            readOnly: true,
-                        }}
-                        fullWidth
-                        margin="normal"
-                        variant="outlined"
-                    />
+                    {/* Hiển thị hình ảnh minh họa và giá tiền */}
+                    {serviceImage && (
+                        <Box sx={{ display: 'flex', alignItems: 'center', marginTop: 2 }}>
+                            <img src={serviceImage} alt="Service Illustration" style={{ width: '100px', marginRight: '20px' }} />
+                            <Typography variant="h6" sx={{ fontWeight: "bold" }}>{price}</Typography>
+                        </Box>
+                    )}
 
                     {/* Giới tính bác sĩ */}
                     <FormControl fullWidth variant="outlined" margin="normal">
