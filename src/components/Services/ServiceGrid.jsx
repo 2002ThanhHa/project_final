@@ -74,7 +74,7 @@ const servicesDataThamMy = [
     id: "Phục hình răng đã mất",
     title: "Răng sứ thẩm mỹ",
     imgSrc: suMy,
-    link: '/tram-rang',
+    link: '/rang-su-tham-my',
     price: "800.000 - 12.000.000 VNĐ/răng (tùy vào loại sứ)"
   },
   {
@@ -220,7 +220,7 @@ const ServiceGrid = () => {
                 <Button variant="contained" color="error" onClick={() => handleClick(service.link)}>
                   Xem thêm
                 </Button>
-                <Button variant="contained" color="primary" onClick={() => handleBookingClick(service)}>
+                <Button style={{marginLeft:"50px"}} variant="contained" color="primary" onClick={() => handleBookingClick(service)}>
                   Đặt lịch
                 </Button>
               </CardContent>
