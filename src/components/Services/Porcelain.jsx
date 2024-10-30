@@ -585,10 +585,20 @@ const Porcelain = () => {
                                     onChange={handleServiceChange}
                                     label="Dịch vụ"
                                 >
-                                    <MenuItem value="Niềng răng mắc cài kim loại mặt ngoài">Niềng răng mắc cài kim loại mặt ngoài</MenuItem>
-                                    <MenuItem value="Niềng răng mắc cài kim loại mặt trong">Niềng răng mắc cài kim loại mặt trong</MenuItem>
-                                    <MenuItem value="Niềng răng mắc cài sứ">Niềng răng mắc cài sứ</MenuItem>
+                                    <MenuItem value="Sứ kim loại Titan">Sứ kim loại Titan</MenuItem>
+                                    <MenuItem value="Sứ kim loại Mỹ">Sứ kim loại Mỹ</MenuItem>
+                                    <MenuItem value="Sứ kim loại Đức">Sứ kim loại Đức</MenuItem>
+                                    <MenuItem value="Sứ Zirconia">Sứ Zirconia</MenuItem>
+                                    <MenuItem value="Sứ Cercon">Sứ Cercon</MenuItem>
+                                    <MenuItem value="Sứ Cercon HT">Sứ Cercon HT</MenuItem>
+                                    <MenuItem value="Sứ Emax">Sứ Emax</MenuItem>
+                                    <MenuItem value="Sứ DDBIO">Sứ DDBIO</MenuItem>
+                                    <MenuItem value="Sứ Lava Plus">Sứ Lava Plus</MenuItem>
+                                    <MenuItem value="Sứ Orodent Bleach">Sứ Orodent Bleach</MenuItem>
+                                    <MenuItem value="Sứ Orodent White">Sứ Orodent White</MenuItem>
+                                    <MenuItem value="Sứ Orodent Gold">Sứ Orodent Gold</MenuItem>
                                 </Select>
+                               
                             </FormControl>
                         </Grid>
 
